@@ -12,6 +12,7 @@ class Solution {
             this.t = t;
         }
     }
+    //queue mwin bas wo sab daal do = 2 wale jo pehle se kharab ho chuke ye time = 0 pe kharap hogye h
     public int orangesRotting(int[][] grid) {
         Queue<Pair> q = new LinkedList<>();
         int fresh = 0;
@@ -32,11 +33,13 @@ class Solution {
                 //remove
                 Pair temp = q.remove();
                 //mark*
+                //agar wo pehle kam time pe kharap ho chuka h to humko aur kuch nahi karna
                 if(visited[temp.i][temp.j] == true){
                     continue;
                 }
                 visited[temp.i][temp.j] = true;
                 //work
+                //agar mera remove wala time mere global time se bada h to time badha do
                 if(temp.t>time){
                     time = temp.t;
                 }
@@ -60,6 +63,7 @@ class Solution {
     public void addstar(boolean[][] visited, int[][] grid, int i , int j,Queue<Pair> q,int t ){
         if(i<0||j<0||i>=grid.length||j>=grid[0].length){
             return;
+            //agar wo pehle se visited h matlab khrap ho chuka h to usko add mat karo
         }else if(visited[i][j] == true || grid[i][j] == 0){
             return;
         }
